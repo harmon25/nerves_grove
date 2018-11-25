@@ -171,7 +171,7 @@ defmodule Nerves.Grove.OLED.Display do
     # TODO: optimize more once https://github.com/fhunleth/elixir_ale/issues/20 is fixed.
     block = :erlang.list_to_binary([@data_mode, String.duplicate("\x00", 16)])
     Enum.each(1..48, fn _ ->
-      Enum.each(1..div(96, 16), fn _ -> I2c.write(pid, block) end)
+      Enum.each(1..div(96, 16), fn _ -> ElixirALE.I2C.write(pid, block) end)
     end)
   end
 
