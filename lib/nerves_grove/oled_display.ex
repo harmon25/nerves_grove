@@ -19,7 +19,7 @@ defmodule Nerves.Grove.OLED.Display do
       OLED.Display.set_text_position(pid, 0, 0)
       OLED.Display.put_string(pid, "Hello, world")
   """
-  alias ElixirALE.I2C, as: I2c
+ # alias ElixirALE.I2C, as: I2c
   
   @default_address 0x3C
   @command_mode    0x80
@@ -128,7 +128,7 @@ defmodule Nerves.Grove.OLED.Display do
 
   @spec start_link(byte) :: {:ok, pid} | {:error, any}
   def start_link(address \\ @default_address) do
-    I2c.start_link("i2c-1", address)
+    ElixirALE.I2C.start_link("i2c-1", address)
   end
 
   @spec reset(pid) :: :ok
@@ -283,11 +283,11 @@ defmodule Nerves.Grove.OLED.Display do
 
   @spec send_command(pid, byte) :: :ok
   defp send_command(pid, command) do
-    I2c.write(pid, <<@command_mode, command>>)
+    ElixirALE.I2C.write(pid, <<@command_mode, command>>)
   end
 
   @spec send_data(pid, byte) :: :ok
   defp send_data(pid, data) do
-    I2c.write(pid, <<@data_mode, data>>)
+    ElixirALE.I2C.write(pid, <<@data_mode, data>>)
   end
 end
