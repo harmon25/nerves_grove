@@ -128,7 +128,7 @@ defmodule Nerves.Grove.OLED.Display do
 
   @spec start_link(byte) :: {:ok, pid} | {:error, any}
   def start_link(address \\ @default_address) do
-    I2c.start_link("i2c-2", address)
+    I2c.start_link("i2c-1", address)
   end
 
   @spec reset(pid) :: :ok
