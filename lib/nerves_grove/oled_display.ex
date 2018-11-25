@@ -19,7 +19,7 @@ defmodule Nerves.Grove.OLED.Display do
       OLED.Display.set_text_position(pid, 0, 0)
       OLED.Display.put_string(pid, "Hello, world")
   """
-  alias ElixirALE.I2C as: I2c
+  alias ElixirALE.I2C, as: I2c
   
   @default_address 0x3C
   @command_mode    0x80
